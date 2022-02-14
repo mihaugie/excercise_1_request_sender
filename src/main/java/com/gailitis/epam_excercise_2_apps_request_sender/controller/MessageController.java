@@ -23,7 +23,5 @@ public class MessageController {
     public ResponseEntity forwardMessage(@RequestBody String message) {
         ResponseEntity responseEntity = restService.postMessage(message);
         return responseEntity;
-
     }
-
 }

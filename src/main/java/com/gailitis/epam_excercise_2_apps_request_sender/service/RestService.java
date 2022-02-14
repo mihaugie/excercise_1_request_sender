@@ -37,13 +37,7 @@ public class RestService {
 
         ResponseEntity<String> response = restTemplate.postForEntity(BACKEND_URL, entity, String.class);
 
-//        if (response.getStatusCode() == HttpStatus.OK) {
-//            System.out.println("Request Successful");
-//            System.out.println(response.getBody());
-//        } else {
-//            System.out.println("Request Failed");
-//            System.out.println(response.getStatusCode());
-//        }
+        logResult(response);
         return response;
     }
 
@@ -54,6 +48,14 @@ public class RestService {
 
         if (message.length() >= MESSAGE_LIMIT) {
             throw new MessageTooLongException("The message must be shorter than " + MESSAGE_LIMIT + " characters");
+        }
+    }
+
+    private void logResult(ResponseEntity<String> response) {
+        if (response.getStatusCode() == HttpStatus.OK) {
+            System.out.println("Request Successful");
+        } else {
+            System.out.println("Request Failed");
         }
     }
 
